@@ -1,62 +1,32 @@
-<!DOCTYPE html>
-
-<html lang="en-Us">
+<html lang="en">
 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="manifest" href="manifest.json">
-    <title>Advanced Programming Techniques</title>
-
-    <script>navigator.serviceWorker.register('sw.js')</script>
-
-    <style>
-        body {
-            max-width: 700px;
-            font: 15px arial;
-        }
-        table {
-            border-collapse: collapse;
-        }
-        td {
-            border: 1px solid blue;
-            padding: 6px;
-        }
-        ul li {
-            line-height: 28px;
-        }
-        a {
-            text-decoration: none;
-        }
-    </style>
-
+    <link rel="stylesheet" href="style.css">
+    <div class="Container">
+        <header class="Header">
+            <h1 id="title" class="Header1">Advanced Programming Techniques</h1>
+        </header>
 </head>
 
 <body>
-
-    <h1>Advanced Programming Techniques</h1>
-    <h2>Evren Keskin</h2>
-    <hr>
-    <p>This repository includes my class works, homeworks and project in the advanced programming course.
-    <p>
-    <ul>
-        <li><a href="https://github.com/keskinEvren/advanced-programming">GitHub Repo</a></li>
-    </ul>
-
-    <h4>Class Works</h4>
-    <ul>
-        <li><a href="https://keskinevren.github.io/advanced-programming/Classwork_1/iban-verification.html">CW#1 -- IBAN
-                verification</a></li>
-        <li><a href="https://keskinevren.github.io/advanced-programming/Classwork_2/text-to-objects.html">CW#2 –- Text
-                to Objects
-            </a></li>
-    </ul>
-    <h4>Homeworks</h4>
-    <ul>
-        <li><a href="https://keskinevren.github.io/advanced-programming/Homework_1/chap4.html">HW#1 -- Array methods
-    </ul>
-
+    <div class="container2">
+        <h3><a href="https://github.com/keskinEvren/advanced-programming">Repository</a></h3>
+        <h3 id="class-work">Class work</h3>
+        <ul>
+            <li><a href="https://keskinevren.github.io/advanced-programming/Classwork_1/iban-verification.html">CW#1 --
+                    IBAN
+                    Verification</a></li>
+            <li><a href="https://keskinevren.github.io/advanced-programming/Classwork_2/text-to-objects.html">CW#2 –-
+                    Text
+                    to Objects</a></li>
+        </ul>
+        <h3 id="homework">Homework</h3>
+        <ul>
+            <li><a href="https://keskinevren.github.io/advanced-programming/Homework_1/chap4.html">HW#1 -- Array methods
+            </li>
+        </ul>
+    </div>
+    <script>navigator.serviceWorker.register('sw.js')</script>
 </body>
 
 </html>
