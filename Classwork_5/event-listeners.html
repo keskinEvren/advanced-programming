@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://blm305.github.io/2022/work/fetch.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: blue; }
+  </style>
+<style>@font-face {
+              font-family: 'Open Sans Regular';
+              font-style: normal;
+              font-weight: 400;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-regular.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans Bold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-800.woff');
+          }</style></head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+  <h2 id=title title="Modify xxx"></h2>
+
+  <h3>Battery Status</h3>
+  <p>Status: <span id=charging>??</span></p> 
+  <p>Battery Level: <span id=level>??</span></p>
+  <h3>Online Status</h3>
+  <span id = "online">??</span>
+  <h3>Keyboard</h3>
+  <span id = "key">??</span>
+  <hr />
+  <b>Sample code</b>
+<pre id=sample>This text is not shown. Why?</pre>
+
+<hr />
+<hr>
+
+<script>
+  "use strict";
+  // JavaScript comment
+  function check() {
+      fetch(url.value).then(r => 
+        resp.innerText = r.ok? 'OK' : 'Not found'
+      ).catch(e => resp.innerText = e)
+  }
+  function init() {
+      navigator.getBattery().then(battery => {
+          battery.onchargingchange = () => charging.innerText = (battery.charging ? "Charging" : "Discharging")
+          
+          battery.onlevelchange = () => level.innerText = 100 * battery.level + '%'
+        })
+      ononline = () => online.innerText = "connected -- online"
+      onoffline = () => online.innerText = "disconnected -- offline"
+      onkeydown = (event) => key.innerText = event.key
+      onkeyup = (event) => key.innerText = event.key
+      check()
+  }
+      title.innerText = document.title;
+      sample.innerText = init+'\n'+check;
+      init();
+  </script>
+
+
+
+</body></html>
