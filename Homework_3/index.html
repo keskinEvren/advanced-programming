@@ -60,15 +60,19 @@
       let currentImage = 0;
 
       function getInitialImage() {
-        for (let i = 0; i <= 9; i++) {
-          setTimeout(function timer() {
-            currentImage = i;
-            mainImage.src = `${images[i]}`;
-            console.log(images[i]);
-          }, i * 200);
+        for (let j = 0; j <= 100; j++) {
+          for (let i = 0; i <= 9; i++) {
+            setTimeout(function timer() {
+              currentImage = i;
+              fetch(images[i])
+                .then((r) => r.blob())
+                .then((mainImage.src = images[i]));
+                console.log("haydee");
+            }, i * 2000);
+          }
         }
       }
-    
+
       function next() {
         currentImage++;
         if (currentImage <= 9) {
@@ -90,8 +94,9 @@
       }
 
       function stop() {
-        currentImage = 0;
-        mainImage.src = `${images[0]}`;
+        fetch(images[1])
+          .then((r) => r.blob())
+          .then((mainImage.src = images[1]));
       }
     </script>
   </body>
