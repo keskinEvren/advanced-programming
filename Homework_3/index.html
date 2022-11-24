@@ -23,7 +23,6 @@
 
     <div class="buttons">
       <button id="start">Start</button>
-      <button id="pause">Pause</button>
       <button id="next">Next</button>
       <button id="prev">Prev</button>
       <button id="stop">Stop</button>
@@ -60,36 +59,42 @@
       let currentImage = 0;
 
       function getInitialImage() {
-        for (let j = 0; j <= 100; j++) {
-          for (let i = 0; i <= 9; i++) {
-            setTimeout(function timer() {
-              currentImage = i;
-              fetch(images[i])
-                .then((r) => r.blob())
-                .then((mainImage.src = images[i]));
-                console.log("haydee");
-            }, i * 2000);
-          }
+        for (let i = 0; i <= 9; i++) {
+          setTimeout(function timer() {
+            currentImage = i;
+            fetch(images[i])
+              .then((r) => r.blob())
+              .then((mainImage.src = images[i]));
+            console.log("haydee");
+          }, i * 175);
         }
       }
 
       function next() {
         currentImage++;
         if (currentImage <= 9) {
-          mainImage.src = `${images[currentImage]}`;
+          fetch(images[currentImage])
+            .then((r) => r.blob())
+            .then((mainImage.src = images[currentImage]));
         } else {
           currentImage = 0;
-          mainImage.src = `${images[currentImage]}`;
+          fetch(images[currentImage])
+            .then((r) => r.blob())
+            .then((mainImage.src = images[currentImage]));
         }
       }
 
       function prev() {
         currentImage--;
         if (currentImage >= 0) {
-          mainImage.src = `${images[currentImage]}`;
+          fetch(images[currentImage])
+            .then((r) => r.blob())
+            .then((mainImage.src = images[currentImage]));
         } else {
           currentImage = 9;
-          mainImage.src = `${images[currentImage]}`;
+          fetch(images[currentImage])
+            .then((r) => r.blob())
+            .then((mainImage.src = images[currentImage]));
         }
       }
 
