@@ -28,12 +28,37 @@
     <input type="text" id="usr" value="keskinEvren" onChange="readUser()" />
     <hr />
     <p id="out"></p>
+    <hr />
+    <b>Sample code</b>
+    <pre id="sample"></pre>
+    <p>
+      Ref:
+      <a
+        href="https://docs.github.com/en/rest/reference/rate-limit"
+        target="NewTab"
+        >GitHub API</a
+      >
+      &emsp;
+      <a href="https://blm305.github.io/2021/work/await.html" target="NewTab"
+        >await</a
+      >
+    </p>
     <script>
       "use strict";
       function error(t) {
         out.style.color = "red";
         out.innerText = t;
         throw t;
+      }
+      function exception(s) {
+        switch (s) {
+          case 403:
+            throw "Rate limit exceeded";
+          case 404:
+            throw usr.value + " not found";
+          default:
+            throw "Status " + s;
+        }
       }
       async function toJSON(url) {
         let r = await fetch(url);
@@ -65,9 +90,15 @@
         out.innerHTML += BR + u.location;
         out.innerHTML += BR + u.blog;
       }
+      async function showRateLimit() {
+        const LIM = "https://api.github.com/rate_limit";
+        let { rate } = await toJSON(LIM);
+        lim.innerText = rate.used + "/" + rate.limit;
+      }
       title.innerText = document.title;
-      out.innerText = "Reading data";
+      sample.innerText = toJSON + "\n" + readUser;
       readUser();
     </script>
+    <script src="/JS/navbar.js"></script>
   </body>
 </html>
