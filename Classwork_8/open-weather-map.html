@@ -41,13 +41,9 @@
         width: 30px;
       }
 
-      #one {
-        margin: 10px;
-      }
-
       #map {
-        height: 400px;
-        width: 400px;
+        height: 450px;
+        width: 450px;
         box-sizing: border-box;
         border: 0;
       }
@@ -91,7 +87,6 @@
       </p>
     </div>
     <div id="map"></div>
-    <div id="one">Zoom = <span id="out"></span></div>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -270,15 +265,11 @@
         let u = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
         let attribution = "&copy; OpenStreetMap contributors";
         L.tileLayer(u, { attribution }).addTo(MAP);
-        let report = () => (out.innerText = MAP.getZoom());
-        MAP.on("zoom", report);
-        report();
+
         MAP.on("click", (e) => {
           document.querySelector("#lat").value = e.latlng.lat;
           document.querySelector("#lon").value = e.latlng.lng;
-
           MAP = MAP.setView([e.latlng.lat, e.latlng.lng], 10); //setZoom(10)
-
           askWeather();
           console.log(e.latlng);
         });
