@@ -37,12 +37,20 @@
       #err {
         color: rgb(61, 75, 206);
       }
+      lat {
+        width: 30px;
+      }
+
+      #one {
+        margin: 10px;
+      }
+
       #map {
-            height: 400px;
-            width: 400px;
-            box-sizing: border-box;
-            border: 0;
-        }
+        height: 400px;
+        width: 400px;
+        box-sizing: border-box;
+        border: 0;
+      }
     </style>
   </head>
 
@@ -76,31 +84,19 @@
       <pre id="gunes">sunrise</pre>
     </div>
     <hr />
-
-    <hr>
-    <div>
-        <p id="err">You need an API key for openweathermap.org
-            <a href="https://openweathermap.org/appid" target="NewTab">here</a>
-        </p>
-
-    </div>
-    <div id=map></div>
-    <div id=one>
-       Zoom = <span id=out></span>
-   </div>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
     <div>
       <p id="err" style="">
         You need an API key for openweathermap.org
         <a href="https://openweathermap.org/appid" target="NewTab">here</a>
       </p>
     </div>
-
-    <b>Sample code</b>
-    <pre id="sample"></pre>
-    <hr />
+    <div id="map"></div>
+    <div id="one">Zoom = <span id="out"></span></div>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
       "use strict";
@@ -261,47 +257,42 @@
         if (e.keyCode === 27) t.blur();
       };
 
-      sample.innerText = window.onload +
-       "\n" + showWeather +"\n" + showIcon;
+      sample.innerText = window.onload + "\n" + showWeather + "\n" + showIcon;
     </script>
     <script>
-      "use strict"
-      var MAP  //global
+      "use strict";
+      var MAP; //global
       function init() {
-          //initial coordinates are given: 50. Yil Parki
-          let p = { lat: 40.970021, lng: 29.057876 }
-          //L is global object from leaflet
-          MAP = L.map('map').setView(p, 10)  //setZoom(10)
-          let u = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          let attribution = '&copy; OpenStreetMap contributors'
-          L.tileLayer(u, { attribution }).addTo(MAP)
-          let report = () => out.innerText = MAP.getZoom()
-          MAP.on('zoom', report); report()
-          MAP.on('click', e => {
+        //initial coordinates are given: 50. Yil Parki
+        let p = { lat: 40.970021, lng: 29.057876 };
+        //L is global object from leaflet
+        MAP = L.map("map").setView(p, 10); //setZoom(10)
+        let u = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        let attribution = "&copy; OpenStreetMap contributors";
+        L.tileLayer(u, { attribution }).addTo(MAP);
+        let report = () => (out.innerText = MAP.getZoom());
+        MAP.on("zoom", report);
+        report();
+        MAP.on("click", (e) => {
+          document.querySelector("#lat").value = e.latlng.lat;
+          document.querySelector("#lon").value = e.latlng.lng;
 
+          MAP = MAP.setView([e.latlng.lat, e.latlng.lng], 10); //setZoom(10)
 
-              document.querySelector("#lat").value = e.latlng.lat
-              document.querySelector("#lon").value = e.latlng.lng
-
-              MAP = MAP.setView([e.latlng.lat, e.latlng.lng], 10)  //setZoom(10)
-
-
-              askWeather()
-              console.log(e.latlng)
-
-          })
+          askWeather();
+          console.log(e.latlng);
+        });
       }
 
       function getKon(lat, lon) {
+        let p = { lat: lat, lng: lon };
 
-          let p = { lat: lat, lng: lon }
-
-          MAP = MAP.setView(p, 10)  //setZoom(10)
-          let u = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          let attribution = '&copy; OpenStreetMap contributors'
-          L.tileLayer(u, { attribution }).addTo(MAP)
+        MAP = MAP.setView(p, 10); //setZoom(10)
+        let u = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        let attribution = "&copy; OpenStreetMap contributors";
+        L.tileLayer(u, { attribution }).addTo(MAP);
       }
-      init()
-  </script>
+      init();
+    </script>
   </body>
 </html>
