@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #545ca2;
+  font-weight: bold;
+}
+
+.musicPlayer {
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.wrapper {
+  border: 1px solid transparent;
+  padding: 30px;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 20px;
+  background-color: #ddd;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0);
+}
+
+.informations {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.images {
+  margin: 5px;
+  height: 300px;
+  width: 350px;
+  background-size: cover;
+}
+
+.name {
+  font-size: 2.5rem;
+}
+
+.singer {
+  margin-top: 5px;
+  font-size: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.active {
+  color: black;
+}
+
+.repeat,
+.random,
+.play,
+.prev,
+.next {
+  padding: 25px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.repeat:hover,
+.random:hover,
+.play:hover,
+.prev:hover,
+.next:hover {
+  opacity: 1;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seek_slider,
+.volume_slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #83a9ff;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border: 3px solid #3774ff;
+  cursor: grab;
+  border-radius: 100%;
+}
+
+.seek_slider:hover,
+.volume_slider:hover {
+  opacity: 1;
+}
+
+.seek_slider {
+  width: 60%;
+}
+
+.volume_slider {
+  width: 30%;
+}
+
+.timer,
+.duration {
+  padding: 10px;
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+  padding: 10px;
+}
+
+i,
+i.fa-play-circle,
+i.fa-pause-circle,
+i.fa-step-forward,
+i.fa-step-backward,
+p {
+  cursor: pointer;
+}
+.randomActive {
+  color: black;
+}
+
