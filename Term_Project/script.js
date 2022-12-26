@@ -56,7 +56,6 @@ function loadTrack(track_index) {
   updateTimer = setInterval(setUpdate, 1000);
 
   curr_track.addEventListener("ended", nextMusic);
-  random_bg_color();
 }
 
 function reset() {
